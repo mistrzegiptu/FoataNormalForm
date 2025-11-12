@@ -8,12 +8,15 @@ namespace FoataNormalForm
 {
     internal class FoataInput
     {
-        public List<Transaction> Transactions { get; }
+        private List<Transaction> _transactions;
+        public List<Transaction> Transactions => [.._transactions];
+        public Set Set { get; }
         public string Word { get; }
 
-        public FoataInput(List<Transaction> transactions, string word)
+        public FoataInput(List<Transaction> transactions, Set set, string word)
         {
-            Transactions = transactions;
+            _transactions = transactions;
+            Set = set;
             Word = word;
         }
     }

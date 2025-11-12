@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace FoataNormalForm
 {
-    internal static class DependenceRelation
+    internal static class DependenceRelationExtensions
     {
         public static bool AreInRelation(this Transaction transaction, Transaction anotherTransaction)
         {
-            return transaction.Operations.Contains(anotherTransaction.Variable) ||
+            return transaction.Label == anotherTransaction.Label ||
+                   transaction.Operations.Contains(anotherTransaction.Variable) ||
                    anotherTransaction.Operations.Contains(transaction.Variable);
         }
     }
