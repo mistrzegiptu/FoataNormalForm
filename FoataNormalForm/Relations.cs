@@ -8,9 +8,9 @@ namespace FoataNormalForm
 {
     internal class Relations
     {
-        private List<Transaction> _transactions;
-        public List<(Transaction, Transaction)> _dependenceSet;
-        public List<(Transaction, Transaction)> _independenceSet;
+        private List<Transaction> _transactions = [];
+        private List<(Transaction, Transaction)> _dependenceSet = [];
+        private List<(Transaction, Transaction)> _independenceSet = [];
 
         public void BuildSets(List<Transaction> transactions)
         {
@@ -35,7 +35,7 @@ namespace FoataNormalForm
             var transactionA = _transactions.FirstOrDefault(t => t.Label == transactionALabel);
             var transactionB = _transactions.FirstOrDefault(t => t.Label == transactionBLabel);
 
-            return AreDependent(transactionA, transactionB);
+            return transactionA != null && transactionB != null && AreDependent(transactionA, transactionB);
         }
 
         public void PrintDependenceSet()

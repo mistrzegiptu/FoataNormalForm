@@ -4,7 +4,10 @@ class Program
 {
     public static void Main(string[] args)
     {
-        var fileName = args.Length == 2 ? args[1] : @".\case1.txt";
+        var fileName = args.Length == 1 ? args[0] : "case0.txt";
+
+        if (!File.Exists(fileName))
+            fileName = @".\case0.txt";
 
         var foataInput = InputParser.ParseFile(fileName);
 
@@ -16,7 +19,11 @@ class Program
         var mazurkiewiczGraph = new MazurkiewiczGraph();
         mazurkiewiczGraph.BuildGraph(foataInput.Word, relations);
 
-        Console.WriteLine(mazurkiewiczGraph.ToDotFormat());
+        var graphInDotFormat = mazurkiewiczGraph.ToDotFormat();
+
+        Console.WriteLine(graphInDotFormat);
         Console.WriteLine(mazurkiewiczGraph.ToFoataNormalForm());
+
+        File.WriteAllText("outputGraphDot.txt", graphInDotFormat);
     }
 }

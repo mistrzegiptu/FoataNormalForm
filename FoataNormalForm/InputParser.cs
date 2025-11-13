@@ -15,8 +15,8 @@ namespace FoataNormalForm
         private const string _wordPattern = @"([a-z]) \= ([a-z]+)";
 
         private static readonly List<Transaction> _transactions = [];
-        private static Set _set;
-        private static string _word;
+        private static Set _set = null!;
+        private static string _word = string.Empty;
 
         public static FoataInput ParseFile(string filePath)
         {

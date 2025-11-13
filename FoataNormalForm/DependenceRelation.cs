@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FoataNormalForm
 {
-    internal static class DependenceRelationExtensions
+    internal static class DependenceRelation
     {
         public static bool AreInRelation(this Transaction transaction, Transaction anotherTransaction)
         {
